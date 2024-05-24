@@ -1,45 +1,16 @@
-// const countryInformation=()=>{
-//     // Define the URL of the JSON file
-//     const jsonUrl = './data.json';
-    
-//     // Fetch the JSON data from the URL
-//     fetch(jsonUrl)
-//       .then((response) => {
-//         if (!response.ok) {
-//           throw new Error(`HTTP error! status: ${response.status}`);
-//         }
-//         return response.json();
-//       })
-//       .then((data) => {
-//         return data
-    
-//       })
-//       .catch((error) => {
-//         console.error('There has been a problem with your fetch operation: \n' + error.message);
-//       });
-
-// }
-
-// console.log(countryInformation())
-
 
 async function countryInformation() {
-    // Define the URL of the JSON file
     const jsonUrl = './data.json';
   
     try {
-      // Fetch the JSON data from the URL
       const response = await fetch(jsonUrl);
   
-      // Check for successful response
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
   
-      // Parse the response as JSON
       const data = await response.json();
   
-      // Return the parsed country information
       return data;
     } catch (error) {
       console.error('There has been a problem with your fetch operation: \n' + error.message);
@@ -93,10 +64,6 @@ async function countryInformation() {
 
   }
 
-//   function display_content(){
-//     const continent=document.getElementById('filter-dropdown').value
-//     console.log(continent)
-//   }
 
 
 function displayCountries(contriesData, selectedContinent) {
@@ -111,15 +78,17 @@ function displayCountries(contriesData, selectedContinent) {
     });
   }
   
-  // Call displayCountries when the filter dropdown changes
-    const filterDropdown = document.getElementById('filter-dropdown');
-  filterDropdown.addEventListener('change', () => {
+
+
+// display for each country
+const filterDropdown = document.getElementById('filter-dropdown');
+filterDropdown.addEventListener('change', () => {
     const selectedContinent = filterDropdown.value;
     // console.log(selectedContinent)
     (async () => {
       try {
         const countriesData = await countryInformation();
-        displayCountries(countriesData, selectedContinent); // Pass selected continent for filtering
+        displayCountries(countriesData, selectedContinent); 
       } catch (error) {
         console.error('Error fetching country information:', error);
       }
@@ -127,6 +96,46 @@ function displayCountries(contriesData, selectedContinent) {
   });
   
 
+
+// display for inputed country via input field
+const countrySearch = document.getElementById('country');
+countrySearch.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        const inputValue = countrySearch.value;
+        (async () => {
+            try {
+                const countriesData = await countryInformation();
+                const selectedCountry = countriesData.find(country => country.name.toLowerCase() === inputValue.toLowerCase());
+                if (selectedCountry) {
+                    const mainContainer=document.getElementById('main')
+                    mainContainer.innerHTML='';
+                    console.log(selectedCountry);
+                    displayCountry(selectedCountry);
+                } else {
+                    console.log(`No country found with the name "${inputValue}"`);
+                }
+            } catch (error) {
+                console.error('Error fetching country information:', error);
+            }
+        })();
+    }
+});
+
+
+
+
+
+
+
+// handle one country check for a specific country
+function countryCheck(countries, country){
+    countries.forEach((country) => {
+        if (country.name === country){
+            console.log(country)
+            displayCountry(country);
+        }
+    })
+}
 
 
 
@@ -144,6 +153,8 @@ function displayCountries(contriesData, selectedContinent) {
       console.error('Error fetching country information:', error);
     }
   })();
+
+  
 
 
   
