@@ -77,11 +77,11 @@ header .search-container .dropDown #filter-dropdown{
     /* border: 1px solid black; */
 }
 main{
-    /* border: 2px solid black; */
-    width: 80%;
+    border: 2px solid black;
+    width: 90%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
     grid-template-rows: repeat(auto-fit, minmax(1fr, 1fr));
     grid-gap: 1rem;
     margin-top: 10px;
@@ -93,12 +93,16 @@ main .container{
     box-shadow: 1px 1px 4px black;
     /* padding: 10px; */
     height: max-content;
-    width: max-content;
+    /* width: 400px; */
     border-radius: 8px;
+    cursor: pointer;
+    /* border: 3px solid black; */
 }
 
 main .container .image{
     height: 50%;
+    width: 100%;
+    /* border: 3px solid red; */
     margin-bottom:10px;
 }
 img{
@@ -149,4 +153,15 @@ body.darkMode .inputDiv #country{
 body.darkMode #filter-dropdown{
     background-color: hsl(207, 26%, 17%);
     color: aliceblue;
+}
+
+body.darkMode main .container .info .faint{
+    font-weight: 400;
+    color: rgba(245, 245, 245, 0.788);
+}
+
+
+.mainEntry{
+    border: 3px solid red;
+    width: 100%;
 }
