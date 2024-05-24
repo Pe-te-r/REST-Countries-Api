@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="navBox">
+            <nav>
+                <div><h2>Where in the world?</h2></div>
+                <div id="theme">
+                    <span>moon</span>
+                    <span>Dark Mode</span>
+                </div>
+            </nav>
+        </div>
+        <div class="search-container">
+            <div class="inputDiv"><input type="text" placeholder="search for a country"></div>
+            <div class="dropDown">
+                <select id="filter-dropdown" onchange="display_content()">
+                    <option value="all">Filter by Region</option>
+                    <option value="asia">Asia</option>
+                    <option value="africa">Africa</option>
+                    <option value="europe">Europe</option>
+                    <option value="north-america">North America</option>
+                    <option value="south-america">South America</option>
+                    <option value="oceania">Oceania</option>
+                </select>
+            </div>
+        </div>
+    </header>
+    <main id="main">
+       
+    </main>
+
+    <script src="index.js"></script>
+</body>
+</html>
