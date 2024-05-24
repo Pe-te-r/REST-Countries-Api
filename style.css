@@ -94,6 +94,7 @@ main .container{
     /* padding: 10px; */
     height: max-content;
     width: max-content;
+    border-radius: 8px;
 }
 
 main .container .image{
@@ -125,4 +126,27 @@ main .container .info .bold{
 main .container .info .faint{
     font-weight: 400;
     color: rgb(65, 71, 68);
+}
+
+
+/* dark mode styles */
+
+body.darkMode {
+    background-color: hsl(207, 26%, 17%);
+    color: rgb(255, 255, 255);
+}
+
+body.darkMode main .container {
+    background-color: hsl(207, 26%, 17%);
+    box-shadow: 1px 1px 6px black;
+}
+
+body.darkMode .inputDiv #country{
+    background-color: hsl(207, 26%, 17%);
+    color: aliceblue;
+}
+
+body.darkMode #filter-dropdown{
+    background-color: hsl(207, 26%, 17%);
+    color: aliceblue;
 }

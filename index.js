@@ -1,4 +1,5 @@
 
+// importing the json file from data.json
 async function countryInformation() {
     const jsonUrl = './data.json';
   
@@ -129,14 +130,14 @@ countrySearch.addEventListener('keydown', (event) => {
 
 
 // handle one country check for a specific country
-function countryCheck(countries, country){
-    countries.forEach((country) => {
-        if (country.name === country){
-            console.log(country)
-            displayCountry(country);
-        }
-    })
-}
+// function countryCheck(countries, country){
+//     countries.forEach((country) => {
+//         if (country.name === country){
+//             console.log(country)
+//             displayCountry(country);
+//         }
+//     })
+// }
 
 
 
