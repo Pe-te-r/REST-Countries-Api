@@ -10,9 +10,7 @@ body{
     font-weight: 400;
     font-size: 18px;
 }
-header{
-    /* border: 3px solid black; */
-}
+
 header .navBox{
     box-shadow: 2px 1px 4px rgba(0, 0, 0, 0.89);
     width: 100%;
@@ -29,7 +27,14 @@ header nav{
 
 header nav #theme{
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
+header nav #theme span{
+    margin-left: 10px;
+}
+
+
 
 header .search-container{
     /* border:3px solid red; */
@@ -76,8 +81,6 @@ main{
     width: 80%;
     margin: 0 auto;
     display: grid;
-    /* grid-template-columns:repeat(auto-fit); */
-    /* grid-template-rows:repeat(auto); */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-rows: repeat(auto-fit, minmax(1fr, 1fr));
     grid-gap: 1rem;
@@ -94,7 +97,6 @@ main .container{
 }
 
 main .container .image{
-    /* border: 2px dotted red; */
     height: 50%;
     margin-bottom:10px;
 }

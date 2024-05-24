@@ -18,6 +18,7 @@ async function countryInformation() {
   }
 
 
+//  handles displaying container for each country individually when country is passed.
   function displayCountry(data){
     const mainContainer=document.getElementById('main')
     // mainContainer.innerHTML='';
@@ -157,4 +158,6 @@ function countryCheck(countries, country){
   
 
 
-  
+  function changeTheme(){
+    document.body.classList.toggle('darkMode')
+  }
