@@ -49,6 +49,7 @@ async function countryInformation() {
 
   function displayCountry(data){
     const mainContainer=document.getElementById('main')
+    // mainContainer.innerHTML='';
 
     const mainDiv=document.createElement('div');
     mainDiv.classList.add('container');
@@ -92,16 +93,51 @@ async function countryInformation() {
 
   }
 
-  function display_content(){
-    const continent=document.getElementById('filter-dropdown').value
-    console.log(continent)
+//   function display_content(){
+//     const continent=document.getElementById('filter-dropdown').value
+//     console.log(continent)
+//   }
+
+
+function displayCountries(contriesData, selectedContinent) {
+ 
+    const mainContainer=document.getElementById('main')
+    mainContainer.innerHTML='';
+    contriesData.forEach((countryInfo) => {
+        if (countryInfo.region === selectedContinent){
+            console.log(countryInfo.name)
+            displayCountry(countryInfo);
+        }
+    });
   }
   
+  // Call displayCountries when the filter dropdown changes
+    const filterDropdown = document.getElementById('filter-dropdown');
+  filterDropdown.addEventListener('change', () => {
+    const selectedContinent = filterDropdown.value;
+    // console.log(selectedContinent)
+    (async () => {
+      try {
+        const countriesData = await countryInformation();
+        displayCountries(countriesData, selectedContinent); // Pass selected continent for filtering
+      } catch (error) {
+        console.error('Error fetching country information:', error);
+      }
+    })();
+  });
+  
+
+
+
+
   (async () => {
     try {
       const contriesData = await countryInformation();
         contriesData.forEach(countryInfo => {
+            // console.log(contriesData[1])
             displayCountry(countryInfo);
+
+            // console.log(data)
             
         });
     } catch (error) {
