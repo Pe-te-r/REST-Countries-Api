@@ -77,7 +77,7 @@ header .search-container .dropDown #filter-dropdown{
     /* border: 1px solid black; */
 }
 main{
-    border: 2px solid black;
+    /* border: 2px solid black; */
     width: 90%;
     margin: 0 auto;
     display: grid;
@@ -161,7 +161,108 @@ body.darkMode main .container .info .faint{
 }
 
 
+/* styles for one page more  */
+
+
 .mainEntry{
-    border: 3px solid red;
+    /* border: 3px solid red; */
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    /* padding:10px; */
+}
+.mainEntry .countryInfo{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    /* border: 3px dotted black; */
+    /* width: 100%; */
+    /* padding: 12px; */
+
+}
+
+.mainEntry .countryInfo .more_info{
+    /* border: 4px solid blue; */
+    display: flex;
+    /* width: 100%; */
+    /* padding: 10px; */
+    flex-direction: column;
+}
+
+.mainEntry .countryInfo .more_info h3{
+    font-size: 2.1rem;
+    font-weight: 800;
+    margin: 10px 0px;
+}
+
+.mainEntry .countryInfo .more_info .image {
+    width: 400px ;
+    height: 250px;
+    margin-right: 10px;
+    /* width: 100%; */
+}
+.mainEntry .countryInfo .more_info .image img {
     width: 100%;
+    height: 100%;
+}
+
+.mainEntry .countryInfo .moreInfo{
+    /* border: 3px solid ; */
+    /* width: 100%; */
+    display: flex;
+    margin: 10px 0px;
+    /* margin: 0px 30px; */
+}
+
+.mainEntry .countryInfo .moreInfo .left{
+    /* width: max-content; */
+    margin-right: 10px;
+}
+
+.mainEntry .countryInfo .moreInfo .right{
+    /* border: 3px dotted green; */
+    margin-left: 20px ;
+}
+
+.mainEntry .countryInfo .moreInfo p{
+    font-size: 1.5rem;
+    line-height: 3.2rem;
+    font-weight: 600;
+    /* color: red; */
+}
+.mainEntry .countryInfo .moreInfo p span{
+    font-weight: 200;
+}
+
+.mainEntry .countryInfo .borders{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 12px 0px; */
+}
+
+.mainEntry .countryInfo .borders p{
+    font-size: 1.2rem;
+    font-weight: 600;
+    /* border: 3px dotted black; */
+}
+
+
+.mainEntry .countryInfo .borders button{
+    padding: 10px 18px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: .5px solid black;
+}
+
+.back_button{
+    border: .5px dotted black;
+    padding: 10px 30px;
+    border-radius:4px ;
+    font-size: 1.2rem;
+    cursor: pointer;
+
 }

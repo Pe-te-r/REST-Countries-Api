@@ -87,11 +87,119 @@ async function showMoreInfo(country_received){
     search.style.display="none"
     mainContainer.innerHTML='';
 
-    const mainEntry=document.createElement('div')
-    mainEntry.classList.add('mainEntry')
+    // console.log(selected_country.flags['png'])
+    let img_src = selected_country.flags['svg'];
+    
+    // Create the main container div with class 'mainEntry'
+    const mainEntry = document.createElement('div');
+    mainEntry.className = 'mainEntry';
 
-    mainContainer.appendChild(mainEntry)
+// Create the first inner div
+    const firstDiv = document.createElement('div');
+    const backButton = document.createElement('button');
+    backButton.className = 'back_button';
+    backButton.textContent = 'back';
+    backButton.addEventListener('click',()=>{
+      const mainContainer = document.getElementById('main');
+      mainContainer.innerHTML = '';
+      
+      (async () => {
+        try {
+          const countriesData = await countryInformation();
+          countriesData.forEach(countryInfo => {
+            displayCountry(countryInfo);
+          });
+        } catch (error) {
+          console.error('Error fetching country information:', error);
+        }
+      })();
 
+    })
+    firstDiv.appendChild(backButton);
+
+// Create the second inner div with class 'countryInfo'
+    const countryInfo = document.createElement('div');
+    countryInfo.className = 'countryInfo';
+
+// Create the image div
+  const imageDiv = document.createElement('div');
+  const image = document.createElement('img');
+  image.setAttribute('src', img_src);
+  imageDiv.classList.add('image');
+
+  imageDiv.appendChild(image);
+
+  // Create the 'more_info' div
+  const moreInfo = document.createElement('div');
+  moreInfo.className = 'more_info';
+  const countryName = document.createElement('h3');
+  countryName.textContent = selected_country.name;
+
+  // Create the 'moreInfo' div
+  const moreInfoInner = document.createElement('div');
+  moreInfoInner.className = 'moreInfo';
+
+  // Create the left and right div for details
+  const leftDiv = document.createElement('div');
+  leftDiv.className = 'left';
+  const rightDiv = document.createElement('div');
+  rightDiv.className = 'right';
+
+  // Populate left div with details
+  leftDiv.innerHTML = `
+    <p>Native Name: <span>${selected_country.nativeName}</span></p>
+    <p>Population: <span>${selected_country.population}</span></p>
+    <p>Region: <span>${selected_country.region}</span></p>
+    <p>Sub Region: <span>${selected_country.subregion}</span></p>
+    <p>Capital: <span>${selected_country.capital}</span></p>
+  `;
+
+  // Populate right div with details
+  rightDiv.innerHTML = `
+    <p>Top Level Domain: <span>${selected_country.topLevelDomain}</span></p>
+    <p>Currencies: <span>${selected_country.currencies[0]['name']}</span></p>
+    <p>Languages: <span>${selected_country.languages[0]['name']}</span></p>
+  `;
+
+  // Append left and right div to 'moreInfo' div
+  moreInfoInner.appendChild(leftDiv);
+  moreInfoInner.appendChild(rightDiv);
+
+  // Create the 'borders' div
+  const bordersDiv = document.createElement('div');
+  bordersDiv.className = 'borders';
+  const neighbours =selected_country.borders;
+ 
+  console.log(neighbours);
+  
+  const borderCountriesP = document.createElement('p');
+  borderCountriesP.textContent = 'Border Countries: ';
+  bordersDiv.appendChild(borderCountriesP);
+  
+
+  if(neighbours === null || neighbours === undefined) {
+    const noBordersP = document.createElement('p');
+    noBordersP.textContent = 'No borders';
+    bordersDiv.appendChild(noBordersP) 
+   }else{
+    neighbours.forEach(neighbour => {
+      const button = document.createElement('button');
+      button.textContent = neighbour;
+      bordersDiv.appendChild(button);
+    });
+  }
+
+  moreInfo.appendChild(imageDiv);
+  moreInfo.appendChild(countryName);
+  moreInfo.appendChild(moreInfoInner);
+  moreInfo.appendChild(bordersDiv);
+
+  mainEntry.appendChild(firstDiv);
+  mainEntry.appendChild(countryInfo);
+  countryInfo.appendChild(moreInfo);
+
+  // Append the main container div body
+  mainContainer.appendChild(mainEntry);
 
   }
   console.log(selected_country)
