@@ -102,9 +102,11 @@ async function showMoreInfo(country_received){
     backButton.addEventListener('click',()=>{
       const mainContainer = document.getElementById('main');
       mainContainer.innerHTML = '';
+      const search = document.getElementById('search');
       
       (async () => {
         try {
+          search.style.display="flex"
           const countriesData = await countryInformation();
           countriesData.forEach(countryInfo => {
             displayCountry(countryInfo);
